@@ -1,0 +1,30 @@
+{
+  "name": "feelbuy-stock-awal",
+  "version": "1.0.0",
+  "description": "Aplikasi untuk mengunduh stock awal J-Stock.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saiful-akbar/feelbuy-stock-awal.git"
+  },
+  "keywords": [
+    "feelbuy",
+    "stock",
+    "jstock",
+    "inventory",
+    "locknlock"
+  ],
+  "author": "saifulakbar.dev@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saiful-akbar/feelbuy-stock-awal/issues"
+  },
+  "homepage": "https://github.com/saiful-akbar/feelbuy-stock-awal#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "jquery": "^3.7.1"
+  }
+}
