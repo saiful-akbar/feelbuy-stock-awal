@@ -4,7 +4,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use App\App;
 
-$date = explode('-', $_GET['month'] ?? date('Y-m'));
+$date = (!empty($_GET['month'])) ? $_GET['month'] : date('Y-m');
+$date = explode('-', $date);
+
 $year = $date[0];
 $month = $date[1];
 
@@ -22,6 +24,24 @@ $month = $date[1];
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= App::baseUrl('/node_modules/bootstrap/dist/css/bootstrap.min.css') ?>">
+
+    <!-- Style -->
+    <style>
+        #preloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.75;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,6 +50,12 @@ $month = $date[1];
         const html = document.querySelector('html');
         html.dataset.bsTheme = currentTheme;
     </script>
+
+    <div id="preloader" class="bg-dark">
+        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 
     <div class="container my-5">
         <div class="row">
@@ -48,7 +74,7 @@ $month = $date[1];
                 <input type="month"
                     name="month"
                     id="month"
-                    value="<?= $_GET['month'] ?? date('Y-m') ?>"
+                    value='<?= "$year-$month" ?>'
                     class="form-control">
             </div>
         </div>
@@ -94,6 +120,13 @@ $month = $date[1];
     <!-- Javascript vendor -->
     <script src="<?= App::baseUrl('/node_modules/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
     <script src="<?= App::baseUrl('/node_modules/jquery/dist/jquery.min.js') ?>"></script>
+
+    <!-- Hide preloader -->
+    <script>
+        $(document).ready(function() {
+            $('#preloader').fadeOut();
+        });
+    </script>
 
     <!-- Change month -->
     <script>
