@@ -58,33 +58,42 @@ $month = $date[1];
     </div>
 
     <div class="container my-5">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-12 mb-3 mb-md-0">
-                <label for="theme" class="form-label">Theme</label>
-
-                <select name="theme" id="theme" class="form-select">
-                    <option value="light">Light</option>
-                    <option value="dark">Dark</option>
-                </select>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12">
-                <label for="month" class="form-label">Select Month</label>
-
-                <input type="month"
-                    name="month"
-                    id="month"
-                    value='<?= "$year-$month" ?>'
-                    class="form-control">
-            </div>
-        </div>
+        <h1 class="h1">Download Stock Awal</h1>
 
         <hr class="my-5">
 
-        <div class="card">
+        <section class="mb-5">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12 mb-3 mb-md-0">
+                    <label for="theme" class="form-label">Theme</label>
+
+                    <select name="theme" id="theme" class="form-select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12">
+                    <label for="month" class="form-label">Month</label>
+
+                    <input type="month" name="month" id="month"
+                        value='<?= "$year-$month" ?>' class="form-control">
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
             <div class="card-header py-3">
-                <button type="button" id="downloadAll" class="btn btn-primary bg-gradient">
+                <button type="button" id="downloadAll" class="btn btn-success bg-gradient">
                     Download All
+                </button>
+
+                <button type="button" id="downloadJabo" class="btn btn-primary bg-gradient">
+                    Download Jabo
+                </button>
+
+                <button type="button" id="downloadSR" class="btn btn-primary bg-gradient">
+                    Download SR
                 </button>
             </div>
 
@@ -114,7 +123,7 @@ $month = $date[1];
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- Javascript vendor -->
@@ -142,66 +151,22 @@ $month = $date[1];
 
     <!-- Download all stock -->
     <script>
-        const regions = [{
-                "id": "32",
-                "name": "JABO 1"
-            },
-            {
-                "id": "33",
-                "name": "JABO 2"
-            },
-            {
-                "id": "34",
-                "name": "JABO 3"
-            },
-            {
-                "id": "35",
-                "name": "JABO 4"
-            },
-            {
-                "id": "36",
-                "name": "JABO 5"
-            },
-            {
-                "id": "37",
-                "name": "JABO 6"
-            },
-            {
-                "id": "38",
-                "name": "JABO 7"
-            },
-            {
-                "id": "39",
-                "name": "JABO 8"
-            },
-            {
-                "id": "40",
-                "name": "JABO 9"
-            },
-            {
-                "id": "16",
-                "name": "SR 1"
-            },
-            {
-                "id": "17",
-                "name": "SR 2"
-            },
-            {
-                "id": "18",
-                "name": "SR 3"
-            },
-            {
-                "id": "29",
-                "name": "SR 4"
-            },
-            {
-                "id": "26",
-                "name": "SR 5"
-            },
-            {
-                "id": "30",
-                "name": "SR 6"
-            }
+        const regions = [
+            {id: "32", name: "JABO 1", region: "Jabo"},
+            {id: "33", name: "JABO 2", region: "Jabo"},
+            {id: "34", name: "JABO 3", region: "Jabo"},
+            {id: "35", name: "JABO 4", region: "Jabo"},
+            {id: "36", name: "JABO 5", region: "Jabo"},
+            {id: "37", name: "JABO 6", region: "Jabo"},
+            {id: "38", name: "JABO 7", region: "Jabo"},
+            {id: "39", name: "JABO 8", region: "Jabo"},
+            {id: "40", name: "JABO 9", region: "Jabo"},
+            {id: "16", name: "SR 1", region: "Special Region"},
+            {id: "17", name: "SR 2", region: "Special Region"},
+            {id: "18", name: "SR 3", region: "Special Region"},
+            {id: "29", name: "SR 4", region: "Special Region"},
+            {id: "26", name: "SR 5", region: "Special Region"},
+            {id: "30", name: "SR 6", region: "Special Region"},
         ];
 
         $('#downloadAll').click(function(e) {
@@ -216,6 +181,40 @@ $month = $date[1];
                 url += '&store=all';
 
                 window.open(url, '_blank');
+            });
+        });
+
+        $('#downloadJabo').click(function(e) {
+            e.preventDefault();
+
+            regions.forEach(region => {
+                if (region.region === 'Jabo') {
+                    let url = '<?= App::jstockUrl() ?>';
+
+                    url += '?year=<?= $year ?>';
+                    url += '&month=<?= $month ?>';
+                    url += `&sub_region=${region.id}`;
+                    url += '&store=all';
+
+                    window.open(url, '_blank');
+                }
+            });
+        });
+
+        $('#downloadSR').click(function(e) {
+            e.preventDefault();
+
+            regions.forEach(region => {
+                if (region.region === 'Special Region') {
+                    let url = '<?= App::jstockUrl() ?>';
+
+                    url += '?year=<?= $year ?>';
+                    url += '&month=<?= $month ?>';
+                    url += `&sub_region=${region.id}`;
+                    url += '&store=all';
+
+                    window.open(url, '_blank');
+                }
             });
         });
     </script>
