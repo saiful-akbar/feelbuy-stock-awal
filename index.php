@@ -67,7 +67,7 @@ $month = $date[1];
                 <div class="col-lg-4 col-md-6 col-12 mb-3 mb-md-0">
                     <label for="theme" class="form-label">Theme</label>
 
-                    <select name="theme" id="theme" class="form-select">
+                    <select name="theme" id="theme" class="form-select form-select-lg">
                         <option value="light">Light</option>
                         <option value="dark">Dark</option>
                     </select>
@@ -76,8 +76,8 @@ $month = $date[1];
                 <div class="col-lg-4 col-md-6 col-12">
                     <label for="month" class="form-label">Month</label>
 
-                    <input type="month" name="month" id="month"
-                        value='<?= "$year-$month" ?>' class="form-control">
+                    <input type="month" name="month" id="month" value='<?= "$year-$month" ?>'
+                        class="form-control form-control-lg">
                 </div>
             </div>
         </section>
@@ -151,22 +151,81 @@ $month = $date[1];
 
     <!-- Download all stock -->
     <script>
-        const regions = [
-            {id: "32", name: "JABO 1", region: "Jabo"},
-            {id: "33", name: "JABO 2", region: "Jabo"},
-            {id: "34", name: "JABO 3", region: "Jabo"},
-            {id: "35", name: "JABO 4", region: "Jabo"},
-            {id: "36", name: "JABO 5", region: "Jabo"},
-            {id: "37", name: "JABO 6", region: "Jabo"},
-            {id: "38", name: "JABO 7", region: "Jabo"},
-            {id: "39", name: "JABO 8", region: "Jabo"},
-            {id: "40", name: "JABO 9", region: "Jabo"},
-            {id: "16", name: "SR 1", region: "Special Region"},
-            {id: "17", name: "SR 2", region: "Special Region"},
-            {id: "18", name: "SR 3", region: "Special Region"},
-            {id: "29", name: "SR 4", region: "Special Region"},
-            {id: "26", name: "SR 5", region: "Special Region"},
-            {id: "30", name: "SR 6", region: "Special Region"},
+        const regions = [{
+                id: "32",
+                name: "JABO 1",
+                region: "Jabo"
+            },
+            {
+                id: "33",
+                name: "JABO 2",
+                region: "Jabo"
+            },
+            {
+                id: "34",
+                name: "JABO 3",
+                region: "Jabo"
+            },
+            {
+                id: "35",
+                name: "JABO 4",
+                region: "Jabo"
+            },
+            {
+                id: "36",
+                name: "JABO 5",
+                region: "Jabo"
+            },
+            {
+                id: "37",
+                name: "JABO 6",
+                region: "Jabo"
+            },
+            {
+                id: "38",
+                name: "JABO 7",
+                region: "Jabo"
+            },
+            {
+                id: "39",
+                name: "JABO 8",
+                region: "Jabo"
+            },
+            {
+                id: "40",
+                name: "JABO 9",
+                region: "Jabo"
+            },
+            {
+                id: "16",
+                name: "SR 1",
+                region: "Special Region"
+            },
+            {
+                id: "17",
+                name: "SR 2",
+                region: "Special Region"
+            },
+            {
+                id: "18",
+                name: "SR 3",
+                region: "Special Region"
+            },
+            {
+                id: "29",
+                name: "SR 4",
+                region: "Special Region"
+            },
+            {
+                id: "26",
+                name: "SR 5",
+                region: "Special Region"
+            },
+            {
+                id: "30",
+                name: "SR 6",
+                region: "Special Region"
+            },
         ];
 
         $('#downloadAll').click(function(e) {

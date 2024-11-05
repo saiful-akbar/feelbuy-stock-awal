@@ -34,11 +34,10 @@ class App
 
     public function __construct()
     {
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
-            $this->baseUrl = 'https://localhost/stock-awal';
-        } else {
-            $this->baseUrl = 'http://localhost/stock-awal';
-        }
+        $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
+        $host = $_SERVER['HTTP_HOST'];
+
+        $this->baseUrl = "{$protocol}{$host}/stock-awal";
     }
 
     /**
